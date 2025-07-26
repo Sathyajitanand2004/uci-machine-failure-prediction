@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCI Machine Predictive Maintenance</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Optional Google Fonts if you're using Orbitron and Exo 2 -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Animated background particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg header">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-cogs me-2"></i>
+                UCI Predictive Maintenance
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1>Machine Intelligence<br><span style="color: #ff8c00;">Predictive Power</span></h1>
+                        <p>Advanced AI-driven predictive maintenance system using UCI Machine Learning dataset. Predict machine failures before they happen with cutting-edge algorithms.</p>
+                        <button class="btn btn-primary" onclick="scrollToForm()">
+                            <i class="fas fa-rocket me-2"></i>Start Prediction
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card text-center">
+                        <i class="fas fa-robot feature-icon" style="font-size: 5rem;"></i>
+                        <h3 style="color: #e0e0e0; font-family: 'Orbitron', monospace;">AI-Powered Analytics</h3>
+                        <p style="color: rgba(224, 224, 224, 0.8);">Harness the power of machine learning to predict equipment failures with unprecedented accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="glass-card feature-card">
+                        <i class="fas fa-chart-line feature-icon"></i>
+                        <h3>Real-time Monitoring</h3>
+                        <p>Monitor air temperature, process temperature, rotational speed, torque, and tool wear in real-time for instant insights.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card feature-card">
+                        <i class="fas fa-brain feature-icon"></i>
+                        <h3>Machine Learning</h3>
+                        <p>Advanced algorithms trained on UCI dataset provide accurate predictions for preventive maintenance scheduling.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card feature-card">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h3>Failure Prevention</h3>
+                        <p>Prevent costly downtime and equipment damage with proactive maintenance recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <section class="form-section py-5" id="prediction-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="glass-card">
+                    <h2 class="text-center mb-4" style="color: #e0e0e0; font-family: 'Orbitron', monospace;">
+                        <i class="fas fa-cog me-2"></i>Machine Prediction Interface
+                    </h2>
+                    
+                    <!-- Display Results if available -->
+                    {% if results %}
+                    <div class="alert alert-{{ result_class if result_class else 'info' }} text-center mb-4">
+                        <h4><i class="fas fa-{{ 'check-circle' if result_class == 'success' else 'exclamation-triangle' }} me-2"></i>{{ results }}</h4>
+                        <p class="mb-0">{{ result_description if result_description else '' }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Display Error if available -->
+                    {% if error %}
+                    <div class="alert alert-danger text-center mb-4">
+                        <h4><i class="fas fa-exclamation-triangle me-2"></i>Error</h4>
+                        <p class="mb-0">{{ error }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    <form action="/predictdata" method="post" id="predictionForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="air_temperature" class="form-label">
+                                    <i class="fas fa-thermometer-half me-2"></i>Air Temperature (K)
+                                </label>
+                                <input type="number" class="form-control" name="air_temperature" id="air_temperature" placeholder="e.g., 300.5" step="0.1" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="process_temperature" class="form-label">
+                                    <i class="fas fa-fire me-2"></i>Process Temperature (K)
+                                </label>
+                                <input type="number" class="form-control" name="process_temperature" id="process_temperature" placeholder="e.g., 309.9" step="0.1" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="rotational_speed" class="form-label">
+                                    <i class="fas fa-sync-alt me-2"></i>Rotational Speed (rpm)
+                                </label>
+                                <input type="number" class="form-control" name="rotational_speed" id="rotational_speed" placeholder="e.g., 1397" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="torque" class="form-label">
+                                    <i class="fas fa-bolt me-2"></i>Torque (Nm)
+                                </label>
+                                <input type="number" class="form-control" name="torque" id="torque" placeholder="e.g., 45.9" step="0.1" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="tool_wear" class="form-label">
+                                    <i class="fas fa-tools me-2"></i>Tool Wear (min)
+                                </label>
+                                <input type="number" class="form-control" name="tool_wear" id="tool_wear" placeholder="e.g., 210" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="type_category" class="form-label">
+                                    <i class="fas fa-tags me-2"></i>Machine Type
+                                </label>
+                                <select class="form-select" name="type_category" id="type_category" required>
+                                    <option value="">Select Type</option>
+                                    <option value="L">Low (L)</option>
+                                    <option value="M">Medium (M)</option>
+                                    <option value="H">High (H)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-magic me-2"></i>Predict Machine Status
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Loading Animation -->
+                    <div class="loading" id="loading" style="display: none;">
+                        <div class="loading-spinner"></div>
+                        <p style="color: #e0e0e0;">Analyzing machine parameters...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="py-4 mt-5" style="background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); border-top: 2px solid rgba(255, 140, 0, 0.3);">
+        <div class="container text-center">
+            <p style="color: rgba(224, 224, 224, 0.8); margin: 0;">
+                <i class="fas fa-code me-2"></i>
+                UCI Machine Predictive Maintenance System | Powered by Advanced Machine Learning
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = 80;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Scroll to form function
+        function scrollToForm() {
+            document.getElementById('prediction-form').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Form submission handler - FIXED TO WORK WITH FLASK
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            // Show loading animation
+            document.getElementById('loading').style.display = 'block';
+            
+            // Don't prevent default - let Flask handle the form submission
+            // The form will submit to /predictdata and Flask will return results
+        });
+
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+
+        // Add form validation styling
+        document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('input', function() {
+                if (this.checkValidity()) {
+                    this.style.borderColor = 'rgba(46, 204, 113, 0.6)';
+                    this.style.boxShadow = '0 0 10px rgba(46, 204, 113, 0.2)';
+                } else {
+                    this.style.borderColor = 'rgba(231, 76, 60, 0.6)';
+                    this.style.boxShadow = '0 0 10px rgba(231, 76, 60, 0.2)';
+                }
+            });
+        });
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

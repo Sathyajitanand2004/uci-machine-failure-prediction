@@ -11,7 +11,7 @@ class PredictPipeline:
     def predict(self, features):
         try:
             model_path = os.path.join("artifacts", "model.pkl")
-            preprocessor_path = os.path.join('artifacts', 'proprocessor.pkl')  # Note: matches the typo in DataTransformationConfig
+            preprocessor_path = os.path.join('artifacts', 'preprocessor.pkl')  # Note: matches the typo in DataTransformationConfig
             
             print("Before Loading")
             model = load_object(file_path=model_path)
@@ -114,7 +114,7 @@ if __name__ == "__main__":
             rot_speed=1397,           # Rotational speed in rpm
             torque=45.9,              # Torque in Nm
             tool_wear=210,              # Tool wear in minutes
-            type_cat="H",             # Type category
+            type_cat="H",             # Type L , H , M category( drop down box)
             
         )
         
