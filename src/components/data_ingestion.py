@@ -4,12 +4,10 @@ import sys
 import os
 import pandas as pd
 import numpy as np
-# from sklearn.pipeline import Pipeline
-# from sklearn.impute import SimpleImputer
-# from sklearn.preprocessing import OneHotEncoder , StandardScaler
-# from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
+
+
 
 @dataclass
 class DataIngestionConfig :
@@ -47,6 +45,3 @@ class DataIngestion :
                   raise CustomException(e,sys)
 
 
-if __name__=="__main__":
-    obj=DataIngestion()
-    train_data,test_data=obj.data_ingestion_method()
