@@ -51,7 +51,7 @@ predictive\_maintanance/
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Tool/Tech              | Purpose                                  |
 |------------------------|------------------------------------------|
