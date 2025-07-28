@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://machinepredctionsj.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_cf8450250bb34b9594ffdcab76446ed8 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_6121a7c95f464b399834790b269606ce }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_0ffd12e3371d4ff8a76c1788418dce29 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_0ac2403617e64b47ab7bca0084263664 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: machinepredctionsj.azurecr.io/${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_7A948EC82C3543CEAEE6986F01C1235E}}/machinepredictionsj:${{ github.sha }}
+        tags: machinepredctionsj.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0ffd12e3371d4ff8a76c1788418dce29 }}/machinepredictionsj:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'MachinePredctionSj'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f9c0674a3fe04aac814984950bd7c58d }}
-        images: 'machinepredctionsj.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_cf8450250bb34b9594ffdcab76446ed8 }}/machinepredictionsj:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2fc7ea83ee0141a0bf133a9bc8c52d3d }}
+        images: 'machinepredctionsj.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0ffd12e3371d4ff8a76c1788418dce29 }}/machinepredictionsj:${{ github.sha }}'
