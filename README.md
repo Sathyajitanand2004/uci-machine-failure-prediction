@@ -86,7 +86,7 @@ The dataset includes sensor readings from a manufacturing process:
 - **Type**: Classification
 - **Algorithm**: `GradientBoostingClassifier`
 - **Target**: Machine failure (Binary: 1 - Fail, 0 - No Fail)
-- **Evaluation Metrics**: Accuracy, F1-Score, Confusion Matrix
+- **Model Accuracy**: - `98.70 %`
 
 ---
 
@@ -162,11 +162,9 @@ The web interface takes sensor values and returns real-time machine failure pred
 
 ---
 
-##  Contributors
+##  Project By:
 
-* **Sathyajit Anand** - [GitHub](https://github.com/sathyajitanand2004)
+* **SATHYAJITANAND V** - [GitHub](https://github.com/sathyajitanand2004)
 
 ---
 
-
-```
