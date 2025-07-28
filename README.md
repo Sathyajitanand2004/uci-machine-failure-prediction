@@ -160,7 +160,7 @@ The web interface takes sensor values and returns real-time machine failure pred
 
 ![Web UI Screenshot](https://github.com/Sathyajitanand2004/uci-machine-failure-prediction/blob/main/Screenshot%20(497).png?raw=true)
 
-![Web UI Screenshot]([https://github.com/Sathyajitanand2004/uci-machine-failure-prediction/blob/main/Screenshot%20(498).png?raw=true)
+![Web UI Screenshot](https://github.com/Sathyajitanand2004/uci-machine-failure-prediction/blob/main/Screenshot%20(498).png?raw=true)
 
 ---
 
