@@ -114,7 +114,7 @@ python app.py
 
 ---
 
-## 🐳 Docker Deployment
+##  Docker Deployment
 
 ### Build Docker image
 
@@ -130,7 +130,7 @@ docker run -p 5000:5000 predictive-maintenance-app
 
 ---
 
-## ☁️ Azure Deployment
+##  Azure Deployment
 
 1. Push code to GitHub.
 2. Create an Azure App Service with Docker enabled.
@@ -143,7 +143,7 @@ https://<your-app-name>.azurewebsites.net
 
 ---
 
-## 🔄 CI/CD Pipeline (GitHub Actions)
+##  CI/CD Pipeline (GitHub Actions)
 
 The CI/CD pipeline:
 
