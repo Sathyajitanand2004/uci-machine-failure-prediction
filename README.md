@@ -66,7 +66,7 @@ predictive\_maintanance/
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 The dataset includes sensor readings from a manufacturing process:
 
@@ -94,7 +94,7 @@ The dataset includes sensor readings from a manufacturing process:
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/<your-username>/predictive_maintanance.git
+git clone https://github.com/<your-username>/predictive_maintanance.git](https://github.com/Sathyajitanand2004/uci-machine-failure-prediction.git
 cd predictive_maintanance
 ````
 
