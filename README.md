@@ -18,7 +18,7 @@ Predictive maintenance uses machine learning to predict the likelihood of machin
 
 ##  Project Structure
 
-
+```
 
 predictive\_maintanance/
 │
@@ -46,7 +46,7 @@ predictive\_maintanance/
 ├── requirements.txt                       # Python dependencies
 ├── setup.py                               # Package setup
 └── README.md                              # This file
-
+```
 
 
 ---
