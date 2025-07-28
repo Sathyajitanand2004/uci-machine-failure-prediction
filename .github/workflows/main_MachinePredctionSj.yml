@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: machinepredctionsj.azurecr.io/${{ secrets.AzureAppService_ContainerUsername}}/machinepredictionsj:${{ github.sha }}
+        tags: machinepredctionsj.azurecr.io/${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_7A948EC82C3543CEAEE6986F01C1235E}}/machinepredictionsj:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
