@@ -86,9 +86,12 @@ The dataset includes sensor readings from a manufacturing process:
 - **Type**: Classification
 - **Algorithm**: `GradientBoostingClassifier`
 - **Target**: Machine failure (Binary: 1 - Fail, 0 - No Fail)
-- **Model Accuracy**: - `98.70 %`
-
----
+- **Model Accuracy**: - `98.65 %`
+-   **Precision**: - `98.59 %`
+-   **recall**: - `98.65 %`
+-   **f1_score**: - `98.60 %`
+-   **roc_auc**: -`96.81 %`
+  ---  
 
 ##  Run Locally
 
